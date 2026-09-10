@@ -1,0 +1,721 @@
+/* =========================
+   全体
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, "Noto Sans JP", sans-serif;
+    background: #ffffff;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 78px;
+    overflow: hidden;
+}
+
+
+/* =========================
+   一番下に書いた店舗画像
+   → 見た目では一番上に表示
+========================= */
+
+main > img:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    display: block;
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
+}
+
+.hero-img {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 82%,
+        rgba(0, 0, 0, 0.25) 94%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 82%,
+        rgba(0, 0, 0, 0.25) 94%,
+        transparent 100%
+    );
+}
+
+
+/* =========================
+   ハンバーガーメニュー
+========================= */
+
+.hamburger-menu {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 30;
+
+    width: 55px;
+    text-align: center;
+}
+
+.hamburger-menu button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 32px;
+    height: 23px;
+
+    margin: 0 auto 5px;
+
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+}
+
+.hamburger-menu button span {
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    background: #ffffff;
+}
+
+.hamburger-menu p {
+    color: #ffffff;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   ポイント部分
+========================= */
+
+.point-list {
+    position: relative;
+    z-index: 10;
+
+    width: calc(100% - 20px);
+
+    /*
+       ここで全体の位置を下げる
+       数字を大きくすると下に移動
+    */
+    margin: 97vw auto 7px;
+
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+/* 左側の画像 */
+
+.point-list > img {
+    display: block;
+
+    width: 31%;
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+
+/* ポイントカード右側 */
+
+.point-card {
+    width: 69%;
+
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 0;
+}
+
+
+/* =========================
+   ポイント上段
+========================= */
+
+.point-up {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* 左：現在のポイント */
+
+.point-left {
+    width: 56%;
+
+    padding-right: 8px;
+}
+
+.point-left > p {
+    margin-bottom: 2px;
+
+    color: #333333;
+
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.point-now {
+    color: #1672d4;
+
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.1;
+
+    white-space: nowrap;
+}
+
+
+/* ポイント進捗 */
+
+.point-progress {
+    position: relative;
+
+    width: 100%;
+    height: 12px;
+
+    margin-top: 5px;
+
+    overflow: hidden;
+}
+
+.point-progress::before {
+    content: "● ● ● ● ● ● ● ● ○ ○";
+
+    display: block;
+
+    color: #1672d4;
+
+    font-size: 9px;
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   右：あと○ポイント
+========================= */
+
+.point-right {
+    width: 44%;
+
+    min-height: 55px;
+
+    padding-left: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-left: 1px solid #dddddd;
+}
+
+.point-right > p {
+    max-width: 75%;
+
+    color: #333333;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.point-right .arrow {
+    flex-shrink: 0;
+
+    width: 8px;
+    height: 8px;
+
+    margin-right: 2px;
+
+    border-top: 1.5px solid #1672d4;
+    border-right: 1.5px solid #1672d4;
+
+    transform: rotate(45deg);
+}
+
+
+/* =========================
+   ポイント下段
+========================= */
+
+.point-down {
+    width: 100%;
+    height: 34px;
+
+    margin-top: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    border: 1.5px solid #1672d4;
+    border-radius: 6px;
+}
+
+.point-down img {
+    width: 18px;
+    height: 18px;
+
+    object-fit: contain;
+}
+
+.point-down p {
+    color: #1672d4;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   6個のボタン
+========================= */
+
+.button-list {
+    position: relative;
+    z-index: 10;
+
+    padding-top: 15px;
+
+    width: calc(100% - 20px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 7px;
+}
+
+
+/* =========================
+   ボタンカード
+========================= */
+
+.button-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.2 / 1;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 9px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+/* 料金・メニュー */
+.card-menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 128, 255, 0.5);
+    z-index: 2;
+}
+
+/* 営業時間 */
+.card-time::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(120, 164, 245, 0.5);
+    z-index: 2;
+}
+
+/* 出勤情報 */
+.card-schedule::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(27, 129, 224, 0.5);
+    z-index: 2;
+}
+
+.card-coupon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(143, 161, 243, 0.61);
+    z-index: 2;
+}
+
+.card-news::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(105, 170, 231, 0.35);
+    z-index: 2;
+}
+
+/* 背景画像 */
+.card-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-icon {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 35px;
+    height: 35px;
+}
+
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+/* 下のグラデーション */
+.card-down {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+
+    width: 100%;
+    height: 60%;
+    padding: 8px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.45) 35%,
+        rgba(0, 0, 0, 0.12) 70%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+
+/* 上の画像部分 */
+
+.card-up {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.card-up img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   カード下部の文字
+========================= */
+
+.card-down {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    z-index: 5;
+
+    width: 100%;
+
+    min-height: 42%;
+
+    padding: 8px 8px 7px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.72),
+        rgba(0, 0, 0, 0)
+    );
+}
+
+
+/* 文字 */
+
+.card-word {
+    width: 100%;
+    text-align: center;
+}
+
+.card-word h2 {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+
+    white-space: nowrap;
+}
+
+.card-word p {
+    margin-top: 1px;
+
+    color: #ffffff;
+
+    font-size: 7px;
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   カード右矢印
+========================= */
+
+.card-down .arrow {
+    flex-shrink: 0;
+
+    width: 7px;
+    height: 7px;
+
+    margin: 0 2px 3px 5px;
+
+    border-top: 1.5px solid #ffffff;
+    border-right: 1.5px solid #ffffff;
+
+    transform: rotate(45deg);
+}
+
+
+/* =========================
+   最初のカードに余計な画像が
+   あった場合
+========================= */
+
+.button-card > img {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    opacity: 0;
+}
+
+
+/* =========================
+   下部メニューバー
+========================= */
+
+.menu-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    z-index: 100;
+
+    width: 100%;
+    height: 70px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    background: #ffffff;
+
+    border-top: 1px solid #dddddd;
+}
+
+
+/* 各ボタン */
+
+.menu-bar > div {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+
+/* アイコン用 */
+
+.menu-bar > div::before {
+    content: "";
+
+    position: absolute;
+    top: 14px;
+
+    width: 18px;
+    height: 18px;
+
+    border: 1.5px solid #1672d4;
+    border-radius: 4px;
+}
+
+
+/* ラベル */
+
+.menu-bar > div::after {
+    position: absolute;
+    top: 39px;
+
+    color: #1672d4;
+
+    font-size: 8px;
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* 各ラベル */
+
+.home-button::after {
+    content: "ホーム";
+}
+
+.point-button::after {
+    content: "ポイント";
+}
+
+.menu-button::after {
+    content: "メニュー";
+}
+
+.time-button::after {
+    content: "営業時間";
+}
+
+.notice-button::after {
+    content: "お知らせ";
+}
+
+
+/* =========================
+   選択中のホーム
+========================= */
+
+.home-button::before {
+    border-radius: 50%;
+}
+
+
+/* =========================
+   スマホ小サイズ
+========================= */
+
+@media (max-width: 375px) {
+
+    .point-list {
+        margin-top: 63vw;
+    }
+
+    .point-now {
+        font-size: 27px;
+    }
+
+    .point-left > p,
+    .point-right > p {
+        font-size: 9px;
+    }
+
+    .card-word h2 {
+        font-size: 10px;
+    }
+
+    .card-word p {
+        font-size: 6px;
+    }
+
+    .menu-bar {
+        height: 66px;
+    }
+
+}
+
+
+/* =========================
+   少し大きいスマホ
+========================= */
+
+@media (min-width: 430px) {
+
+    .point-list {
+        margin-top: 67vw;
+    }
+
+    .point-now {
+        font-size: 32px;
+    }
+
+    .card-word h2 {
+        font-size: 12px;
+    }
+
+    .card-word p {
+        font-size: 8px;
+    }
+
+}
