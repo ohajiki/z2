@@ -11,20 +11,18 @@
 html,
 body {
     width: 100%;
-    min-height: 100%;
-    font-family: Arial, "Noto Sans JP", sans-serif;
-    background: #ffffff;
-}
-
-body {
-    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 main {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    padding-bottom: 78px;
+    height: 100dvh;
+    min-height: 0;
+    padding-bottom: 90px;
     overflow: hidden;
 }
 
@@ -121,7 +119,7 @@ main > img:last-child {
     position: relative;
     z-index: 10;
 
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
 
     /*
        ここで全体の位置を下げる
@@ -177,95 +175,75 @@ main > img:last-child {
 
 .point-up {
     width: 100%;
+}
+
+.point-title {
+    width: 100%;
 
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
-
-/* 左：現在のポイント */
-
-.point-left {
-    width: 56%;
-
-    padding-right: 8px;
-}
-
-.point-left > p {
-    margin-bottom: 2px;
-
+.point-title p {
     color: #333333;
-
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.point-title p:last-child {
+    text-align: right;
+}
+
+.point-title strong {
+    color: #1672d4;
+    font-size: 13px;
 }
 
 .point-now {
-    color: #1672d4;
+    display: flex;
+    margin-top: 2px;
 
+    color: #1672d4;
     font-size: 30px;
     font-weight: 700;
     line-height: 1.1;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
 
     white-space: nowrap;
 }
 
-
-/* ポイント進捗 */
-
 .point-progress {
-    position: relative;
-
     width: 100%;
-    height: 12px;
+    height: 18px;
 
-    margin-top: 5px;
+    margin-top: 4px;
 
-    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .point-progress::before {
     content: "● ● ● ● ● ● ● ● ○ ○";
 
     display: block;
+    width: 100%;
 
     color: #1672d4;
-
-    font-size: 9px;
+    font-size: 16px;
     letter-spacing: 1px;
+    line-height: 1;
 
+    text-align: justify;
+    text-align-last: justify;
     white-space: nowrap;
 }
 
-
-/* =========================
-   右：あと○ポイント
-========================= */
-
-.point-right {
-    width: 44%;
-
-    min-height: 55px;
-
-    padding-left: 9px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border-left: 1px solid #dddddd;
-}
-
-.point-right > p {
-    max-width: 75%;
-
-    color: #333333;
-
-    font-size: 10px;
-    line-height: 1.5;
-}
-
-.point-right .arrow {
+.arrow {
     flex-shrink: 0;
 
     width: 8px;
@@ -431,23 +409,28 @@ main > img:last-child {
     position: absolute;
     left: 0;
     bottom: 0;
-    z-index: 2;
+
+    z-index: 5;
 
     width: 100%;
-    height: 60%;
+    min-height: 42%;
+
     padding: 8px;
 
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
 
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.75) 0%,
-        rgba(0, 0, 0, 0.45) 35%,
-        rgba(0, 0, 0, 0.12) 70%,
-        rgba(0, 0, 0, 0) 100%
+        rgba(0, 0, 0, 0.72),
+        rgba(0, 0, 0, 0)
     );
+}
+
+.card-word {
+    width: 100%;
+    text-align: center;
 }
 
 
@@ -468,35 +451,6 @@ main > img:last-child {
     height: 100%;
 
     object-fit: cover;
-}
-
-
-/* =========================
-   カード下部の文字
-========================= */
-
-.card-down {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-
-    z-index: 5;
-
-    width: 100%;
-
-    min-height: 42%;
-
-    padding: 8px 8px 7px;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.72),
-        rgba(0, 0, 0, 0)
-    );
 }
 
 
@@ -534,18 +488,15 @@ main > img:last-child {
 ========================= */
 
 .card-down .arrow {
-    flex-shrink: 0;
 
-    width: 7px;
-    height: 7px;
-
-    margin: 0 2px 3px 5px;
-
-    border-top: 1.5px solid #ffffff;
-    border-right: 1.5px solid #ffffff;
-
-    transform: rotate(45deg);
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    border-top-color: #ffffff;
+    border-right-color: #ffffff;
 }
+
 
 
 /* =========================
@@ -567,7 +518,7 @@ main > img:last-child {
    下部メニューバー
 ========================= */
 
-.menu-bar {
+/* .menu-bar {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -627,7 +578,7 @@ main > img:last-child {
     font-weight: 500;
 
     white-space: nowrap;
-}
+} */
 
 
 /* 各ラベル */
